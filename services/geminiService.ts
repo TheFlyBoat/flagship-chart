@@ -143,35 +143,42 @@ export const generateCareerProfile = async (userData: UserData): Promise<{ ident
     .join('\n');
 
   const prompt = `
-    Act as an expert career strategist for the UK job market. Your task is to generate a comprehensive career profile based on the user's input.
-    
-    The profile must include:
-    1.  **A Career Identity Statement:** A short, impactful "elevator pitch" (2-3 sentences) summarising the user's professional value.
-    2.  **A list of 5-7 key transferable skills.**
-    3.  **A list of 15 to 20 diverse but relevant career paths.**
+    Act as an encouraging and insightful expert career strategist for the UK job market. Your tone should be professional, modern, and empowering. Your primary goal is to help the user see the full breadth of their potential, including paths they may have never considered.
+
+    Your task is to generate a comprehensive career profile based on the user's input.
+
+    **The profile must include:**
+    1.  **A Career Identity Statement:** A short, impactful "elevator pitch" (2-3 sentences) that summarises the user's professional value and potential. Frame this as an empowering "I am..." statement.
+    2.  **A list of 5-7 key transferable skills.** For each skill, provide a one-sentence explanation of how it connects to the user's background.
+    3.  **A list of 15 to 20 diverse and relevant career paths.**
 
     When generating career paths, prioritise information for the United Kingdom.
 
+    ---
+
     **CRITICAL INSTRUCTIONS FOR GENERATING CAREER PATHS - FOLLOW THESE RULES EXACTLY:**
 
-    1.  **Analyse User Intent First:** Before generating paths, analyse the user's profile holistically. Determine if the user is looking for a career change.
+    **1. Analyse User Intent First:** Before generating paths, analyse the user's profile holistically. Determine if the user is looking for a career change.
         - **Look for Divergence:** If the user's 'Interests/Values' and 'Stated Skills' point in a different direction from their 'Experiences', this is a strong signal for a career change.
-        - **Prioritise Aspirational Goals:** When a divergence is detected, give significantly MORE WEIGHT to 'Interests' and 'Skills' to generate aspirational paths. Give LESS WEIGHT to 'Experience'. For example, if experience is in 'Accounting' but interests are in 'Graphic Design' and 'Creative Writing', the majority of suggestions should be in creative fields, not finance.
-    
-    2.  **Generate a Balanced Portfolio of Paths:**
+        - **Prioritise Aspirational Goals:** When a divergence is detected, give significantly **MORE WEIGHT** to 'Interests' and 'Skills' to generate aspirational paths. Give **LESS WEIGHT** to 'Experience'. For example, if experience is in 'Accounting' but interests are in 'Graphic Design' and 'Creative Writing', the majority of suggestions should be in creative fields, not finance.
+
+    **2. Generate a Balanced and Creative Portfolio of Paths:**
         - **Aspirational Paths (High Priority):** Generate a significant number of paths based on their stated **interests** and values. These paths might be a complete departure from their previous experience.
         - **Skill-Based Pivot Paths:** Generate paths that leverage their specific **skills** in new industries that align with their interests. These are "bridge" careers.
+        - **"Wildcard" Paths:** Include 2-3 creative, "out-of-the-box" suggestions that connect the user's skills and interests in surprising ways. These should be plausible but unexpected.
         - **Direct Evolution Paths (Lower Priority if Divergence exists):** Generate a smaller number of paths that are a direct evolution of their **experience**, but only if they don't strongly contradict the user's stated interests.
         - **Education-Based Paths:** If education is provided and relevant, generate some paths based on their field of study.
 
-    3.  **Enforce Strict and Logical Tagging (EXTREMELY IMPORTANT):** The accuracy of the \`relevanceTags\` is paramount for the application's filtering to work.
-        - **DO NOT CROSS-CONTAMINATE TAGS.** A career path's \`source\` tag must be the DIRECT and PRIMARY reason for its suggestion.
-        - **Rule for 'experience' source:** Only apply this tag if the suggested career is a direct continuation or close relative of a role listed in their 'Experiences'. For example, if the user was an 'Accountant', the path 'Financial Controller' can have an 'experience' tag.
-        - **Rule for 'interest' source:** Only apply this tag if the career path DIRECTLY relates to a stated interest. For example, if an interest is 'Environmental Conservation', the path 'Sustainability Consultant' can have an 'interest' tag.
-        - **Rule for 'skill' source:** Only apply this tag if a specific skill is the key enabler for the career pivot. For example, if the skill is 'Python' and the interest is 'Biology', the path 'Bioinformatics Scientist' can have a 'skill' tag ('Python') and an 'interest' tag ('Biology').
+    **3. Enforce Strict and Logical Tagging (EXTREMELY IMPORTANT):** The accuracy of the \`relevanceTags\` is paramount for the application's filtering to work.
+        - **DO NOT CROSS-CONTAMINATE TAGS.** A career path's \`source\` tag must be the **DIRECT and PRIMARY** reason for its suggestion.
+        - **Rule for 'experience' source:** Only apply this tag if the suggested career is a direct continuation or close relative of a role listed in their 'Experiences'. (e.g., 'Accountant' -> 'Financial Controller').
+        - **Rule for 'interest' source:** Only apply this tag if the career path DIRECTLY relates to a stated interest. (e.g., Interest in 'Environmental Conservation' -> 'Sustainability Consultant').
+        - **Rule for 'skill' source:** Only apply this tag if a specific skill is the key enabler for the career pivot. (e.g., Skill 'Python' + Interest 'Biology' -> 'Bioinformatics Scientist').
         - **DO NOT** give a path like 'Accountant' an 'interest' tag just because the user has interests. The tag must be logically connected to the path itself.
 
-    User's Profile:
+    ---
+
+    **User's Profile:**
     - Experiences: ${experiencesString}
     - Stated Skills: ${userData.skills}
     - Interests/Values: ${userData.interests}
