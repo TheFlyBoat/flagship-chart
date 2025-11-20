@@ -1,11 +1,11 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { UserData, IdentityData, CareerPath, Experience } from '../types';
 
-if (!process.env.API_KEY) {
-  throw new Error("API_KEY environment variable not set");
+if (!import.meta.env.VITE_GEMINI_API_KEY) {
+  throw new Error("VITE_GEMINI_API_KEY environment variable not set");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
 const statementSchema = {
   type: Type.OBJECT,
@@ -373,7 +373,9 @@ export const generateInterests = async (experiences: Experience[], existingSugge
     Based on the following professional experiences:
     ${experiencesString}
 
-    Generate a list of 15 to 20 items. This list should include a diverse mix of: potential career fields, different fields, related industries, professional interests, or work environment preferences.
+    Generate a concise list of exactly 6 items. This list should include:
+    - 2 items closely related to the user's existing professional experiences.
+    - 4 items from different, potentially new, career fields, industries, professional interests, or work environment preferences to encourage exploration.
     Synthesise information from all roles to provide diverse and insightful suggestions.
     Prioritise information relevant to the UK job market.
     Keep each item concise (1-2 words). Examples: 'Sustainable Technology', 'Mentoring others', 'Data-driven decisions', 'FinTech Sector'.

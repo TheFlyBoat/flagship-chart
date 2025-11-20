@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { UserData, IdentityData, CareerPath } from './types';
-import WelcomeScreen from './components/WelcomeScreen';
+import WelcomeScreen2 from './components/WelcomeScreen2';
 import Step1Form from './components/Step1Form';
 import Step2Identity from './components/Step2Identity';
 import Step3Explore from './components/Step3Explore';
 import InfoMenu from './components/InfoMenu';
 import { FlagshipChartTextLogo } from './components/icons';
+import './components/Starfield.css';
 
 enum AppStep {
   Welcome,
@@ -82,7 +83,7 @@ const App: React.FC = () => {
   const renderStep = () => {
     switch (currentStep) {
       case AppStep.Welcome:
-        return <WelcomeScreen onStart={handleStart} />;
+        return <WelcomeScreen2 onStart={handleStart} />;
       case AppStep.InputForm:
         return <Step1Form 
             onSubmit={handleFormSubmit} 
@@ -99,7 +100,7 @@ const App: React.FC = () => {
         }
         return <Step2Identity userData={userData} onComplete={handleIdentityGenerated} />;
       default:
-        return <WelcomeScreen onStart={handleStart} />;
+        return <WelcomeScreen2 onStart={handleStart} />;
     }
   };
 

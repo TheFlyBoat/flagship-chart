@@ -13,18 +13,18 @@ export const FlagshipChartTextLogo: React.FC<{ className?: string; animate?: boo
 
 export const CompassRoseLogo: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg {...props} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="45" stroke="#38bdf8" strokeWidth="2" className="opacity-50 animate-compass-spin" />
+    <circle cx="50" cy="50" r="45" stroke="#9729e1ff" strokeWidth="2" className="opacity-50 animate-compass-spin" />
     <circle cx="50" cy="50" r="35" stroke="#38bdf8" strokeWidth="2" className="opacity-30" />
     <g className="animate-compass-needle-intro">
       <path d="M50 10 L45 50 L50 90 L55 50 Z" fill="#f0f9ff" />
       <path d="M50 10 L45 50 L50 90 L55 50 Z" fill="url(#needle_gradient)" />
-      <path d="M10 50 L50 45 L90 50 L50 55 Z" fill="#94a3b8" />
-      <circle cx="50" cy="50" r="5" fill="#f0f9ff" stroke="#38bdf8" strokeWidth="2" />
+      <path d="M10 50 L50 45 L90 50 L50 55 Z" fill="#94b8a3ff" />
+      <circle cx="50" cy="50" r="5" fill="#f0f9ff" stroke="#1c8364ff" strokeWidth="1" />
     </g>
     <defs>
       <linearGradient id="needle_gradient" x1="0.5" y1="0" x2="0.5" y2="1">
-        <stop offset="0%" stopColor="#38bdf8" />
-        <stop offset="100%" stopColor="#0ea5e9" />
+        <stop offset="0%" stopColor="#1ebed7ff" />
+        <stop offset="100%" stopColor="#0e62e9ff" />
       </linearGradient>
     </defs>
   </svg>

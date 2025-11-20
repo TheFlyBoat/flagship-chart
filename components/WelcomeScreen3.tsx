@@ -1,14 +1,15 @@
 import React from 'react';
 import { FlagshipChartTextLogo, CompassRoseLogo } from './icons';
 import Starfield from './Starfield';
+import { ClipboardPaste, UserStar, Telescope } from 'lucide-react';
 
 interface WelcomeScreenProps {
   onStart: () => void;
 }
 
-const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
+const WelcomeScreen2: React.FC<WelcomeScreenProps> = ({ onStart }) => {
   return (
-    <div className="relative flex flex-col items-center justify-center text-center p-4">
+    <div className="relative flex flex-col items-center justify-center text-center p-4" style={{ zIndex: 0 }}>
       <Starfield />
       <div className="relative z-10 flex flex-col items-center justify-center flex-grow text-center">
         <CompassRoseLogo className="w-24 h-24 sm:w-32 sm:h-32" />
@@ -22,27 +23,21 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
         <div className="mb-16 sm:mb-20 flex flex-col sm:flex-row justify-center gap-8 sm:gap-12 max-w-4xl w-full">
           <div className="flex flex-col items-center text-center">
               <div className="bg-slate-800/50 p-4 rounded-full mb-4 border border-slate-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-sky-400">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg>
+                  <ClipboardPaste className="w-8 h-8 text-sky-400" />
               </div>
               <h3 className="text-xl font-semibold text-slate-200 mb-2">1. Share Your Story</h3>
               <p className="text-slate-400 text-sm max-w-[200px]">Tell us about your experiences, skills, and interests.</p>
           </div>
           <div className="flex flex-col items-center text-center">
               <div className="bg-slate-800/50 p-4 rounded-full mb-4 border border-slate-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-green-400">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0112 21.75c1.052 0 2.062-.18 3-.512V3.75c-1.03-.17-2.053-.292-3-.375zM12 18.75c-2.648 0-5.195-.629-7.5-1.732V5.692c2.305-1.103 4.852-1.732 7.5-1.732s5.195.629 7.5 1.732v11.358c-2.305 1.103-4.852 1.732-7.5 1.732z" />
-                  </svg>
+                  <UserStar className="w-8 h-8 text-green-400" />
               </div>
               <h3 className="text-xl font-semibold text-slate-200 mb-2">2. Discover Your Identity</h3>
               <p className="text-slate-400 text-sm max-w-[200px]">We'll craft a unique professional identity statement for you.</p>
           </div>
           <div className="flex flex-col items-center text-center">
               <div className="bg-slate-800/50 p-4 rounded-full mb-4 border border-slate-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 text-purple-400">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12h16.5m-16.5 0a2.25 2.25 0 000 4.5h16.5a2.25 2.25 0 000-4.5m-16.5 0a2.25 2.25 0 010-4.5h16.5a2.25 2.25 0 010 4.5m-16.5 10.5H12" />
-                  </svg>
+                  <Telescope className="w-8 h-8 text-purple-400" />
               </div>
               <h3 className="text-xl font-semibold text-slate-200 mb-2">3. Explore Your Chart</h3>
               <p className="text-slate-400 text-sm max-w-[200px]">Navigate a personalized map of career possibilities.</p>
@@ -54,12 +49,12 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
         >
           Start Your Journey
         </button>
-        <div className="w-full flex justify-end px-4 pb-4">
-          <p className="text-slate-400 text-sm tracking-widest mt-8">© 2025 FlyBoat Creative</p>
-        </div>
+      </div>
+      <div className="absolute bottom-0 right-0 p-8">
+        <p className="text-slate-400 text-sm tracking-widest">© 2025 FlyBoat Creative</p>
       </div>
     </div>
   );
 };
 
-export default WelcomeScreen;
+export default WelcomeScreen2;

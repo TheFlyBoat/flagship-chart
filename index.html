@@ -27,10 +27,6 @@
     background-color: #09181A; /* Dark teal */
     color: #dadee3; /* slate-100 for base text */
   }
-  #root {
-    background-image: radial-gradient(rgba(203, 213, 225, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -75,10 +71,11 @@
     to { transform: rotate(360deg); }
   }
   .animate-compass-spin {
-    animation: compass-spin 8s linear infinite;
+    transform-origin: top;
+    animation: compass-spin 7s linear infinite;
   }
   @keyframes compass-needle-intro {
-    from { transform: scale(0) rotate(-180deg); opacity: 0; }
+    from { transform: scale(0) rotate(-290deg); opacity: 0; }
     to { transform: scale(1) rotate(0deg); opacity: 1; }
   }
   .animate-compass-needle-intro {
@@ -86,7 +83,6 @@
     animation: compass-needle-intro 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
 </style>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
